@@ -1,0 +1,28 @@
+D:\Docs\Учеба\Мага\ООП\Лаба 1\bin\Debug\net8.0\Лаба 1.exe
+D:\Docs\Учеба\Мага\ООП\Лаба 1\bin\Debug\net8.0\Лаба 1.deps.json
+D:\Docs\Учеба\Мага\ООП\Лаба 1\bin\Debug\net8.0\Лаба 1.runtimeconfig.json
+D:\Docs\Учеба\Мага\ООП\Лаба 1\bin\Debug\net8.0\Лаба 1.dll
+D:\Docs\Учеба\Мага\ООП\Лаба 1\bin\Debug\net8.0\Лаба 1.pdb
+D:\Docs\Учеба\Мага\ООП\Лаба 1\obj\Debug\net8.0\Лаба 1.GeneratedMSBuildEditorConfig.editorconfig
+D:\Docs\Учеба\Мага\ООП\Лаба 1\obj\Debug\net8.0\Лаба 1.AssemblyInfoInputs.cache
+D:\Docs\Учеба\Мага\ООП\Лаба 1\obj\Debug\net8.0\Лаба 1.AssemblyInfo.cs
+D:\Docs\Учеба\Мага\ООП\Лаба 1\obj\Debug\net8.0\Лаба 1.csproj.CoreCompileInputs.cache
+D:\Docs\Учеба\Мага\ООП\Лаба 1\obj\Debug\net8.0\Лаба 1.dll
+D:\Docs\Учеба\Мага\ООП\Лаба 1\obj\Debug\net8.0\refint\Лаба 1.dll
+D:\Docs\Учеба\Мага\ООП\Лаба 1\obj\Debug\net8.0\Лаба 1.pdb
+D:\Docs\Учеба\Мага\ООП\Лаба 1\obj\Debug\net8.0\Лаба 1.genruntimeconfig.cache
+D:\Docs\Учеба\Мага\ООП\Лаба 1\obj\Debug\net8.0\ref\Лаба 1.dll
+D:\Docs\Учеба\Мага\ООП\LAB_1\bin\Debug\net8.0\Лаба 1.exe
+D:\Docs\Учеба\Мага\ООП\LAB_1\bin\Debug\net8.0\Лаба 1.deps.json
+D:\Docs\Учеба\Мага\ООП\LAB_1\bin\Debug\net8.0\Лаба 1.runtimeconfig.json
+D:\Docs\Учеба\Мага\ООП\LAB_1\bin\Debug\net8.0\Лаба 1.dll
+D:\Docs\Учеба\Мага\ООП\LAB_1\bin\Debug\net8.0\Лаба 1.pdb
+D:\Docs\Учеба\Мага\ООП\LAB_1\obj\Debug\net8.0\Лаба 1.GeneratedMSBuildEditorConfig.editorconfig
+D:\Docs\Учеба\Мага\ООП\LAB_1\obj\Debug\net8.0\Лаба 1.AssemblyInfoInputs.cache
+D:\Docs\Учеба\Мага\ООП\LAB_1\obj\Debug\net8.0\Лаба 1.AssemblyInfo.cs
+D:\Docs\Учеба\Мага\ООП\LAB_1\obj\Debug\net8.0\Лаба 1.csproj.CoreCompileInputs.cache
+D:\Docs\Учеба\Мага\ООП\LAB_1\obj\Debug\net8.0\Лаба 1.dll
+D:\Docs\Учеба\Мага\ООП\LAB_1\obj\Debug\net8.0\refint\Лаба 1.dll
+D:\Docs\Учеба\Мага\ООП\LAB_1\obj\Debug\net8.0\Лаба 1.pdb
+D:\Docs\Учеба\Мага\ООП\LAB_1\obj\Debug\net8.0\Лаба 1.genruntimeconfig.cache
+D:\Docs\Учеба\Мага\ООП\LAB_1\obj\Debug\net8.0\ref\Лаба 1.dll
