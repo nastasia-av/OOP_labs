@@ -72,7 +72,7 @@ namespace RacingSimulator.Weather
                 _ => 0.0
             };
 
-            return groupImpact + specificImpact; // Возвращаем сумму влияний
+            return groupImpact + specificImpact;
         }
     }
 

@@ -2,7 +2,6 @@ using RacingSimulator.Weather;
 
 namespace RacingSimulator.Transports
 {
-    // Абстракция воздушного транспорта
     public abstract class AirTransport : ITransport
     {
         public string Name { get; }
@@ -19,22 +18,21 @@ namespace RacingSimulator.Transports
         public virtual double CalculateTime(double distance, WeatherCondition weatherCondition)
         {
             double accelerationCoefficient = GetAccelerationCoefficient(distance);
-            double impactCoefficient = weatherCondition.GetImpact("Air", Name); // Получаем коэффициент влияния погоды
-            double effectiveSpeed = Speed * (1 - impactCoefficient); // Корректируем скорость с учетом погодных условий
+            double impactCoefficient = weatherCondition.GetImpact("Air", Name); 
+            double effectiveSpeed = Speed * (1 - impactCoefficient); 
 
             if(effectiveSpeed <= 0) return 0;
             return distance / (effectiveSpeed * accelerationCoefficient);
         }
     }
 
-    // Конкретные воздушные транспортные средства с уникальными формулами для коэффициента ускорения
     public class MagicBroom : AirTransport
     {
         public MagicBroom() : base("Метла", 25) { }
 
         protected override double GetAccelerationCoefficient(double distance) 
         {
-            return 1.05 + 0.01 * distance; // Линейная зависимость от дистанции
+            return 1.05 + 0.01 * distance; 
         }
     }
 
@@ -44,7 +42,7 @@ namespace RacingSimulator.Transports
 
         protected override double GetAccelerationCoefficient(double distance) 
         {
-            return 1.2 * (1 + 0.005 * distance); // Увеличение коэффициента с расстоянием
+            return 1.2 * (1 + 0.005 * distance); 
         }
     }
 
@@ -54,7 +52,7 @@ namespace RacingSimulator.Transports
 
         protected override double GetAccelerationCoefficient(double distance) 
         {
-            return 1.1 + Math.Sin(distance / 50); // Синусоидальная зависимость
+            return 1.1 + Math.Sin(distance / 50); 
         }
     }
 
@@ -64,7 +62,7 @@ namespace RacingSimulator.Transports
 
         protected override double GetAccelerationCoefficient(double distance) 
         {
-            return 1.15 * Math.Log(distance + 1); // Логарифмическая зависимость
+            return 1.15 * Math.Log(distance + 1); 
         }
     }
 }

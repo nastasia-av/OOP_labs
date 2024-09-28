@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Docs\\Учеба\\Мага\\ООП\\LAB_1\\Лаба 1.csproj": {}
+    "D:\\Docs\\Учеба\\Мага\\OOP_labs\\LAB_1\\Лаба 1.csproj": {}
   },
   "projects": {
-    "D:\\Docs\\Учеба\\Мага\\ООП\\LAB_1\\Лаба 1.csproj": {
+    "D:\\Docs\\Учеба\\Мага\\OOP_labs\\LAB_1\\Лаба 1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Docs\\Учеба\\Мага\\ООП\\LAB_1\\Лаба 1.csproj",
+        "projectUniqueName": "D:\\Docs\\Учеба\\Мага\\OOP_labs\\LAB_1\\Лаба 1.csproj",
         "projectName": "Лаба 1",
-        "projectPath": "D:\\Docs\\Учеба\\Мага\\ООП\\LAB_1\\Лаба 1.csproj",
+        "projectPath": "D:\\Docs\\Учеба\\Мага\\OOP_labs\\LAB_1\\Лаба 1.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "D:\\Docs\\Учеба\\Мага\\ООП\\LAB_1\\obj\\",
+        "outputPath": "D:\\Docs\\Учеба\\Мага\\OOP_labs\\LAB_1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Asus\\AppData\\Roaming\\NuGet\\NuGet.Config"

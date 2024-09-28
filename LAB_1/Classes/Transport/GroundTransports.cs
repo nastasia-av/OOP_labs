@@ -2,13 +2,12 @@ using RacingSimulator.Weather;
 
 namespace RacingSimulator.Transports
 {
-    // Абстракция наземного транспорта
     public abstract class GroundTransport : ITransport
     {
         public string Name { get; }
         protected double Speed { get; }
         protected double TimeBeforeRest { get; }
-        protected abstract double GetRestDuration(int restNumber);  // Зависимость длительности отдыха от номера остановки
+        protected abstract double GetRestDuration(int restNumber);  
 
         protected GroundTransport(string name, double speed, double timeBeforeRest)
         {
@@ -27,7 +26,6 @@ namespace RacingSimulator.Transports
 
             while (traveled < distance)
             {
-                // Корректируем скорость с учетом погодных условий
                 double effectiveSpeed = Speed * (1 - impactCoefficient);
                 if (effectiveSpeed <= 0) return 0;
 
@@ -50,40 +48,35 @@ namespace RacingSimulator.Transports
 
     }
 
-    // Конкретный наземный транспорт (Кентавр)
     public class Centaur : GroundTransport
     {
         public Centaur() : base("Кентавр", 15, 8) { }
 
         protected override double GetRestDuration(int restNumber)
         {
-            return 3 * Math.Sqrt(restNumber);  // Квадратная зависимость длительности отдыха
+            return 3 * Math.Sqrt(restNumber); 
         }
     }
 
-    // Конкретный наземный транспорт (Сапоги-скороходы)
     public class Boots : GroundTransport
     {
         public Boots() : base("Сапоги-скороходы", 20, 10) { }
 
         protected override double GetRestDuration(int restNumber)
         {
-            return 1.5;  // Константная длительность отдыха
+            return 1.5;  
         }
     }
 
-    // Конкретный наземный транспорт (Карета-тыква)
     public class Carriage : GroundTransport
     {
         public Carriage() : base("Карета-тыква", 12, 7) { }
 
         protected override double GetRestDuration(int restNumber)
         {
-            return Math.Pow(1.5, restNumber);  // Экспоненциальная зависимость длительности отдыха
+            return Math.Pow(1.5, restNumber);  
         }
     }
-
-    // Конкретный наземный транспорт (Избушка на курьих ножках)
     public class YagaHut : GroundTransport
     {
         public YagaHut() : base("Избушка на курьих ножках", 18, 9) { }
@@ -92,7 +85,7 @@ namespace RacingSimulator.Transports
         protected override double GetRestDuration(int restNumber)
         {
             Random random = new Random();
-            return 5 + restNumber * 3 + random.Next(1, 5);  // Случайная зависимость длительности отдыха
+            return 5 + restNumber * 3 + random.Next(1, 5);  
         }
     }
 }

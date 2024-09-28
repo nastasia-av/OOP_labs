@@ -26,7 +26,6 @@ namespace RacingSimulator.Races
             RaceType = raceType;
         }
 
-        // Проверка, зарегистрирован ли уже транспорт
         public bool IsTransportRegistered(ITransport transport)
         {
             return participants.Any(p => p.GetType() == transport.GetType());
@@ -34,7 +33,6 @@ namespace RacingSimulator.Races
 
         public void RegisterTransport(ITransport transport)
         {
-            // Проверяем, подходит ли транспорт по типу гонки
             switch (RaceType)
             {
                 case RaceType.Ground:
@@ -46,7 +44,6 @@ namespace RacingSimulator.Races
                         throw new InvalidOperationException($"Транспорт {transport.Name} не подходит для воздушной гонки.");
                     break;
                 case RaceType.Mixed:
-                    // Все типы транспорта разрешены
                     break;
                 default:
                     throw new ArgumentException("Неверный тип гонки.");
