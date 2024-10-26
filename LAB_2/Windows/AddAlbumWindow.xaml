@@ -1,0 +1,20 @@
+﻿<Window x:Class="MusicCatalog.Windows.AddAlbumWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Добавить Альбом" Height="350" Width="400">
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Text="Введите название альбома:" FontWeight="Bold" Margin="0,0,0,10"/>
+            <TextBox x:Name="AlbumNameTextBox" Width="300" Margin="0,0,0,10" />
+
+            <TextBlock Text="Выберите артиста:" FontWeight="Bold" Margin="0,10,0,10"/>
+            <ComboBox x:Name="ArtistComboBox" Width="300" Margin="0,0,0,10" DisplayMemberPath="Name"/>
+
+            <TextBlock Text="Введите дату выхода:" FontWeight="Bold" Margin="0,10,0,10"/>
+            <DatePicker x:Name="ReleaseDatePicker" Width="300" Margin="0,0,0,10"/>
+
+            <Button Content="Добавить" Width="100" Click="OnAddAlbumButtonClick" Margin="0,10,0,10"/>
+            <Button Content="Отмена" Width="100" Click="OnCancelButtonClick" Margin="0,0,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

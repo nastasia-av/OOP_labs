@@ -1,0 +1,48 @@
+﻿<Window x:Class="MusicCatalog.Windows.AddTrackWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Добавить Трек" Height="400" Width="400">
+    <Grid>
+        <StackPanel Margin="20">
+            <TextBlock Text="Введите название трека:" FontWeight="Bold" Margin="0,0,0,10"/>
+            <TextBox x:Name="TrackNameTextBox" Width="300" Margin="0,0,0,10"/>
+
+            <TextBlock Text="Выберите жанр:" FontWeight="Bold" Margin="0,10,0,0"/>
+            <ComboBox x:Name="GenreComboBox" Width="300" Margin="10">
+                <ComboBoxItem Content="Поп" />
+                <ComboBoxItem Content="Рок" />
+                <ComboBoxItem Content="Джаз" />
+                <ComboBoxItem Content="Хип-хоп" />
+                <ComboBoxItem Content="Классическая" />
+                <ComboBoxItem Content="Электронная" />
+                <ComboBoxItem Content="Регги" />
+                <ComboBoxItem Content="Кантри" />
+                <ComboBoxItem Content="Блюз" />
+                <ComboBoxItem Content="Метал" />
+                <ComboBoxItem Content="Панк" />
+                <ComboBoxItem Content="Фолк" />
+                <ComboBoxItem Content="Латинская" />
+                <ComboBoxItem Content="Инди" />
+                <ComboBoxItem Content="Альтернатива" />
+                <ComboBoxItem Content="Саундтрек" />
+                <ComboBoxItem Content="Диско" />
+                <ComboBoxItem Content="Гранж" />
+                <ComboBoxItem Content="Опера" />
+            </ComboBox>
+
+
+            <TextBlock Text="Введите длительность трека:" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" Margin="10,10,0,10">
+                <TextBox x:Name="DurationMinutesTextBox" Width="30" Margin="10,0,5,0"/>
+                <TextBlock Text=":" VerticalAlignment="Center"/>
+                <TextBox x:Name="DurationSecondsTextBox" Width="30" Margin="5,0,5,0"/>
+            </StackPanel>
+
+            <TextBlock Text="Выберите альбом:" FontWeight="Bold" Margin="0,10,0,10"/>
+            <ComboBox x:Name="AlbumComboBox" Width="300" Margin="0,0,0,10" DisplayMemberPath="Title"/>
+
+            <Button Content="Добавить" Width="100" Click="OnAddTrackButtonClick" Margin="0,10,0,10"/>
+            <Button Content="Отмена" Width="100" Click="OnCancelButtonClick" Margin="0,0,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

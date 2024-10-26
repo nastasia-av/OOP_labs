@@ -1,0 +1,109 @@
+﻿<Window x:Class="MusicCatalog.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="600" Width="800">
+
+    <!-- Основной контейнер -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- Верхняя панель с кнопками добавления -->
+            <RowDefinition Height="*"/>
+            <!-- Панель поиска -->
+            <RowDefinition Height="*"/>
+            <!-- Панель результатов -->
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя панель с кнопками добавления -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" Grid.Row="0">
+            <Button Content="Add Artist" Width="100" Margin="5" Click="OnAddArtistButtonClick"/>
+            <Button Content="Add Album" Width="100" Margin="5" Click="OnAddAlbumButtonClick"/>
+            <Button Content="Add Track" Width="100" Margin="5" Click="OnAddTrackButtonClick"/>
+        </StackPanel>
+
+        <!-- Центральная панель для поиска -->
+        <StackPanel x:Name="SearchPanel" Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
+            <StackPanel Orientation="Horizontal">
+                <ComboBox x:Name="FilterComboBox" Width="150" Margin="0,0,5,0" SelectionChanged="OnFilterSelectionChanged">
+                    <ComboBoxItem Content="All"/>
+                    <ComboBoxItem Content="Artist"/>
+                    <ComboBoxItem Content="Album"/>
+                    <ComboBoxItem Content="Track"/>
+                </ComboBox>
+
+                <!-- Поле поиска с плейсхолдером -->
+                <Grid>
+                    <TextBox x:Name="SearchBox" Width="300" KeyDown="SearchBox_KeyDown" Margin="0,0,5,0" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus"/>
+                    <TextBlock x:Name="SearchBoxPlaceholder" Text="Введите название" 
+                               Foreground="Gray" VerticalAlignment="Center" Margin="5,0,0,0" 
+                               IsHitTestVisible="False" Visibility="Visible"/>
+                </Grid>
+
+                <ComboBox x:Name="GenreComboBox" Width="300" Margin="0,0,5,0" Visibility="Collapsed">
+                    <ComboBoxItem Content="Поп" />
+                    <ComboBoxItem Content="Рок" />
+                    <ComboBoxItem Content="Джаз" />
+                    <ComboBoxItem Content="Хип-хоп" />
+                    <ComboBoxItem Content="Классическая" />
+                    <ComboBoxItem Content="Электронная" />
+                    <ComboBoxItem Content="Регги" />
+                    <ComboBoxItem Content="Кантри" />
+                    <ComboBoxItem Content="Блюз" />
+                    <ComboBoxItem Content="Метал" />
+                    <ComboBoxItem Content="Панк" />
+                    <ComboBoxItem Content="Фолк" />
+                    <ComboBoxItem Content="Латинская" />
+                    <ComboBoxItem Content="Инди" />
+                    <ComboBoxItem Content="Альтернатива" />
+                    <ComboBoxItem Content="Саундтрек" />
+                    <ComboBoxItem Content="Диско" />
+                    <ComboBoxItem Content="Гранж" />
+                    <ComboBoxItem Content="Опера" />
+                </ComboBox>
+
+                <!-- Кнопка поиска -->
+                <Button Content="Search" Width="100" Click="OnSearchButtonClick"/>
+            </StackPanel>
+
+            <!-- Дополнительный выбор критерия для поиска треков -->
+            <ComboBox x:Name="TrackSearchCriteriaComboBox" Width="150" Margin="0,5,0,0" Visibility="Collapsed" SelectionChanged="OnTrackCriteriaSelectionChanged">
+                <ComboBoxItem Content="По названию"/>
+                <ComboBoxItem Content="По жанру"/>
+                <ComboBoxItem Content="По длительности"/>
+            </ComboBox>
+
+            <StackPanel Orientation="Horizontal" Visibility="Collapsed" x:Name="DurationRangePanel" Margin="0,5,0,0">
+                <TextBlock Text="От:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+
+                <Grid Margin="0,0,10,0">
+                    <TextBox x:Name="DurationFromMinutesTextBox" Width="50" Margin="0,0,5,0" GotFocus="DurationFromMinutesTextBox_GotFocus" LostFocus="DurationFromMinutesTextBox_LostFocus"/>
+                    <TextBlock x:Name="DurationFromMinutesPlaceholder" Text="мм" Foreground="Gray" VerticalAlignment="Center" Margin="5,0,0,0" IsHitTestVisible="False" Visibility="Visible"/>
+                </Grid>
+
+                <Grid Margin="0,0,10,0">
+                    <TextBox x:Name="DurationFromSecondsTextBox" Width="50" Margin="0,0,5,0" GotFocus="DurationFromSecondsTextBox_GotFocus" LostFocus="DurationFromSecondsTextBox_LostFocus"/>
+                    <TextBlock x:Name="DurationFromSecondsPlaceholder" Text="сс" Foreground="Gray" VerticalAlignment="Center" Margin="5,0,0,0" IsHitTestVisible="False" Visibility="Visible"/>
+                </Grid>
+
+                <TextBlock Text="До:" VerticalAlignment="Center" Margin="10,0,5,0"/>
+
+                <Grid Margin="0,0,10,0">
+                    <TextBox x:Name="DurationToMinutesTextBox" Width="50" Margin="0,0,5,0" GotFocus="DurationToMinutesTextBox_GotFocus" LostFocus="DurationToMinutesTextBox_LostFocus"/>
+                    <TextBlock x:Name="DurationToMinutesPlaceholder" Text="мм" Foreground="Gray" VerticalAlignment="Center" Margin="5,0,0,0" IsHitTestVisible="False" Visibility="Visible"/>
+                </Grid>
+
+                <Grid Margin="0,0,10,0">
+                    <TextBox x:Name="DurationToSecondsTextBox" Width="50" GotFocus="DurationToSecondsTextBox_GotFocus" LostFocus="DurationToSecondsTextBox_LostFocus"/>
+                    <TextBlock x:Name="DurationToSecondsPlaceholder" Text="сс" Foreground="Gray" VerticalAlignment="Center" Margin="5,0,0,0" IsHitTestVisible="False" Visibility="Visible"/>
+                </Grid>
+            </StackPanel>
+
+
+        </StackPanel>
+
+        <!-- Панель результатов -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="2">
+            <StackPanel x:Name="ResultsStackPanel"/>
+        </ScrollViewer>
+    </Grid>
+</Window>
