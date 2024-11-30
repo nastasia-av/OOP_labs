@@ -1,0 +1,89 @@
+﻿<Window x:Class="LAB_3.Client.Views.BatchManagementView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Управление партиями товаров" Height="700" Width="1000">
+    <Grid>
+        <DockPanel>
+            <!-- Операции: Добавление/обновление партии -->
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Магазин" Margin="0,0,0,5" />
+                    <ComboBox Width="200" ItemsSource="{Binding Stores}" DisplayMemberPath="Name"
+                              SelectedItem="{Binding SelectedStore}" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Товар" Margin="0,0,0,5" />
+                    <ComboBox Width="200" ItemsSource="{Binding Products}" DisplayMemberPath="Name"
+                              SelectedItem="{Binding SelectedProduct}" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Количество" Margin="0,0,0,5" />
+                    <TextBox Width="100" Text="{Binding NewQuantity}" ToolTip="Количество" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Цена" Margin="0,0,0,5" />
+                    <TextBox Width="100" Text="{Binding NewPrice}" ToolTip="Цена" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <Button Content="Добавить партию" 
+                        Command="{Binding AddBatchCommand}" Width="200" Margin="5" VerticalAlignment="Bottom"/>
+            </StackPanel>
+
+            <!-- Операции поиска партии товара и всех товаров в магазине -->
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
+                <!-- Поиск партии товара по названию -->
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Товар" Margin="0,0,0,5"/>
+                    <ComboBox Width="200" ItemsSource="{Binding Products}" DisplayMemberPath="Name"
+                                SelectedItem="{Binding SelectedProductForSearch}" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <Button Content="Найти партии по товару" 
+                        Command="{Binding FindProductInStoresCommand}" Width="200" Margin="5" VerticalAlignment="Bottom"/>
+
+                <!-- Получение всех товаров в магазине -->
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Магазин" Margin="0,0,0,5"/>
+                    <ComboBox Width="200" ItemsSource="{Binding Stores}" DisplayMemberPath="Name"
+                              SelectedItem="{Binding SelectedStoreForSearch}" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <Button Content="Все товары в магазине" 
+                        Command="{Binding GetAllProductsInStoreCommand}" Width="200" Margin="5" VerticalAlignment="Bottom"/>
+
+                <!-- Кнопка "Показать все" для возвращения к полному списку -->
+                <Button Content="Показать все" 
+                        Command="{Binding ShowAllBatchesCommand}" Width="100" Margin="5" VerticalAlignment="Bottom"/>
+            </StackPanel>
+
+            <!-- Список партий товаров -->
+            <ListView ItemsSource="{Binding Batches}" Margin="10" DockPanel.Dock="Bottom">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Магазин" DisplayMemberBinding="{Binding StoreId}" />
+                        <GridViewColumn Header="Товар" DisplayMemberBinding="{Binding ProductName}" />
+                        <GridViewColumn Header="Количество" DisplayMemberBinding="{Binding Quantity}" />
+                        <GridViewColumn Header="Цена" DisplayMemberBinding="{Binding Price}" />
+                        <GridViewColumn Header="Действия">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Изменить" 
+                                                Command="{Binding DataContext.EditBatchCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                CommandParameter="{Binding}" Margin="5,0" />
+                                        <Button Content="Удалить" 
+                                                Command="{Binding DataContext.DeleteBatchCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                CommandParameter="{Binding}" Margin="5,0" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,50 @@
+﻿<Window x:Class="LAB_3.Client.Views.StoreManagementView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Управление магазинами" Height="500" Width="800">
+    <Grid>
+        <DockPanel>
+            <!-- Добавление нового магазина -->
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Название магазина" Margin="0,0,0,5" />
+                    <TextBox Width="200" Text="{Binding NewStoreName}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Адрес магазина" Margin="0,0,0,5" />
+                    <TextBox Width="200" Text="{Binding NewStoreAddress}" />
+                </StackPanel>
+                <Button Content="Добавить магазин" 
+                        Command="{Binding AddStoreCommand}" Width="150" Margin="5" VerticalAlignment="Bottom"/>
+            </StackPanel>
+
+            <!-- Список магазинов -->
+            <ListView ItemsSource="{Binding Stores}" DockPanel.Dock="Bottom" Margin="10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding StoreId}" />
+                        <GridViewColumn Header="Название" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Адрес" DisplayMemberBinding="{Binding Address}" />
+                        <GridViewColumn>
+                            <GridViewColumn.Header>
+                                <TextBlock Text="Действия" />
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Изменить" 
+                                                Command="{Binding DataContext.EditStoreCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                CommandParameter="{Binding}" Margin="5,0"/>
+                                        <Button Content="Удалить" 
+                                                Command="{Binding DataContext.DeleteStoreCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                CommandParameter="{Binding}" Margin="5,0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</Window>

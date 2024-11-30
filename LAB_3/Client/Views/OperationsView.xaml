@@ -1,0 +1,80 @@
+﻿<Window x:Class="LAB_3.Client.Views.OperationsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Операции" Height="700" Width="1000">
+    <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
+                    <StackPanel Orientation="Vertical" Margin="5">
+                        <TextBlock Text="Товар" Margin="0,0,0,5" />
+                        <ComboBox Width="200" ItemsSource="{Binding Products}" DisplayMemberPath="Name"
+                                  SelectedItem="{Binding SelectedProduct}" />
+                    </StackPanel>
+                    <Button Content="Найти дешевый магазин" 
+                            Command="{Binding FindCheapestStoreCommand}" Width="200" Margin="5" VerticalAlignment="Bottom" />
+                </StackPanel>
+
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
+                    <StackPanel Orientation="Vertical" Margin="5">
+                        <TextBlock Text="Бюджет" Margin="0,0,0,5" />
+                        <TextBox Width="150" Text="{Binding Budget}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="5">
+                        <TextBlock Text="Магазин" Margin="0,0,0,5" />
+                        <ComboBox Width="200" ItemsSource="{Binding Stores}" DisplayMemberPath="Name"
+                                  SelectedItem="{Binding SelectedStore}" />
+                    </StackPanel>
+                    <Button Content="Доступные товары" 
+                            Command="{Binding GetAffordableProductsCommand}" Width="150" Margin="5" VerticalAlignment="Bottom"/>
+                </StackPanel>
+            </StackPanel>
+
+            <!-- Покупка партии товаров -->
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Товар" Margin="0,0,0,5" />
+                    <ComboBox Width="200" ItemsSource="{Binding Products}" DisplayMemberPath="Name"
+                              SelectedItem="{Binding SelectedBatchProduct}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Магазин" Margin="0,0,0,5" />
+                    <ComboBox Width="200" ItemsSource="{Binding Stores}" DisplayMemberPath="Name"
+                              SelectedItem="{Binding SelectedBatchStore}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Количество" Margin="0,0,0,5" />
+                    <TextBox Width="100" Text="{Binding BatchQuantity}" />
+                </StackPanel>
+                <Button Content="Купить партию" 
+                        Command="{Binding PurchaseBatchCommand}" Width="200" Margin="5" VerticalAlignment="Bottom"/>
+            </StackPanel>
+
+            <!-- Поиск магазина с дешевой партией -->
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Товар" Margin="0,0,0,5" />
+                    <ComboBox Width="200" ItemsSource="{Binding Products}" DisplayMemberPath="Name"
+                              SelectedItem="{Binding SelectedBatchProductForSearch}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Количество" Margin="0,0,0,5" />
+                    <TextBox Width="100" Text="{Binding BatchQuantityForSearch}" />
+                </StackPanel>
+                <Button Content="Найти дешевый магазин для партии" 
+                        Command="{Binding FindCheapestStoreForBatchCommand}" Width="250" Margin="5" VerticalAlignment="Bottom" />
+                <Button Content="Очистить результаты" 
+                        Command="{Binding ClearResultsCommand}" Width="150" Margin="235,5,5,5" VerticalAlignment="Bottom" />
+            </StackPanel>
+
+            <!-- Результаты -->
+            <ListView ItemsSource="{Binding Results}" Margin="10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Результат" DisplayMemberBinding="{Binding Description}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</Window>
