@@ -15,9 +15,6 @@ using LAB_3.Client.ViewModels;
 
 namespace LAB_3.Client.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для BatchManagementView.xaml
-    /// </summary>
     public partial class BatchManagementView : Window
     {
         public BatchManagementView()

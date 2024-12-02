@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace LAB_3.Client.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для EditStoreWindow.xaml
-    /// </summary>
     public partial class EditStoreWindow : Window
     {
         public EditStoreWindow()

@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace LAB_3.Client.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для EditBatchWindow.xaml
-    /// </summary>
     public partial class EditBatchWindow : Window
     {
         public EditBatchWindow()

@@ -4,7 +4,6 @@
         Title="Управление партиями товаров" Height="700" Width="1000">
     <Grid>
         <DockPanel>
-            <!-- Операции: Добавление/обновление партии -->
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
                 <StackPanel Orientation="Vertical" Margin="5">
                     <TextBlock Text="Магазин" Margin="0,0,0,5" />
@@ -32,9 +31,7 @@
                         Command="{Binding AddBatchCommand}" Width="200" Margin="5" VerticalAlignment="Bottom"/>
             </StackPanel>
 
-            <!-- Операции поиска партии товара и всех товаров в магазине -->
             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
-                <!-- Поиск партии товара по названию -->
                 <StackPanel Orientation="Vertical" Margin="5">
                     <TextBlock Text="Товар" Margin="0,0,0,5"/>
                     <ComboBox Width="200" ItemsSource="{Binding Products}" DisplayMemberPath="Name"
@@ -44,7 +41,6 @@
                 <Button Content="Найти партии по товару" 
                         Command="{Binding FindProductInStoresCommand}" Width="200" Margin="5" VerticalAlignment="Bottom"/>
 
-                <!-- Получение всех товаров в магазине -->
                 <StackPanel Orientation="Vertical" Margin="5">
                     <TextBlock Text="Магазин" Margin="0,0,0,5"/>
                     <ComboBox Width="200" ItemsSource="{Binding Stores}" DisplayMemberPath="Name"
@@ -54,12 +50,10 @@
                 <Button Content="Все товары в магазине" 
                         Command="{Binding GetAllProductsInStoreCommand}" Width="200" Margin="5" VerticalAlignment="Bottom"/>
 
-                <!-- Кнопка "Показать все" для возвращения к полному списку -->
                 <Button Content="Показать все" 
                         Command="{Binding ShowAllBatchesCommand}" Width="100" Margin="5" VerticalAlignment="Bottom"/>
             </StackPanel>
 
-            <!-- Список партий товаров -->
             <ListView ItemsSource="{Binding Batches}" Margin="10" DockPanel.Dock="Bottom">
                 <ListView.View>
                     <GridView>

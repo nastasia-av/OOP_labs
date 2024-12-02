@@ -25,17 +25,14 @@ namespace LAB_3
             _host = Host.CreateDefaultBuilder()
                 .ConfigureAppConfiguration((context, config) =>
                 {
-                    // Читаем appsettings.json
                     string projectDir = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\"));
                     config.SetBasePath(projectDir);
                     config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
                 })
                 .ConfigureServices((context, services) =>
                 {
-                    // Получаем конфигурацию
                     var configuration = context.Configuration;
 
-                    // Читаем настройки из appsettings.json
                     string repositoryType = configuration["RepositoryType"] ?? "Database";
                     if (repositoryType == "Database")
                     {
@@ -60,7 +57,6 @@ namespace LAB_3
                         string storesFilePath = configuration["Csv:StoresFilePath"];
                         string productsFilePath = configuration["Csv:ProductsFilePath"];
 
-                        // Абсолютные пути к файлам CSV в папке Data
                         string storesAbsolutePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\", storesFilePath);
                         string productsAbsolutePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\", productsFilePath);
 
@@ -82,12 +78,10 @@ namespace LAB_3
                         throw new InvalidOperationException("Неверный тип репозитория в настройках.");
                     }
 
-                    // Регистрируем бизнес-логику
                     services.AddScoped<IStoreService, StoreService>();
                     services.AddScoped<IProductService, ProductService>();
                     services.AddScoped<IBatchService, BatchService>();
 
-                    // Настройка главного окна
                     services.AddTransient<MainWindow>();
                     services.AddTransient<MainViewModel>();
                 })

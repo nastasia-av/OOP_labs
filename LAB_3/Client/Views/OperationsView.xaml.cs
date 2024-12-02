@@ -15,9 +15,6 @@ using LAB_3.Client.ViewModels;
 
 namespace LAB_3.Client.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для OperationsView.xaml
-    /// </summary>
     public partial class OperationsView : Window
     {
         public OperationsView()
