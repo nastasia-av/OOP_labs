@@ -20,6 +20,7 @@ namespace LAB_3.Client.Views
         public StoreManagementView()
         {
             InitializeComponent();
+
         }
     }
 }

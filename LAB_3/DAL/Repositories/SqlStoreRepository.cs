@@ -38,6 +38,7 @@ namespace LAB_3.DAL.Repositories
             if (existingStore != null)
             {
                 existingStore.Name = store.Name;
+                existingStore.Address = store.Address;
                 await _context.SaveChangesAsync();
             }
         }
