@@ -1,0 +1,32 @@
+﻿<Window x:Class="LAB_4.UI.Views.SetRelationshipWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Set Relationship" Height="300" Width="400">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Content="Person:" />
+        <ComboBox Grid.Row="0" Grid.Column="1" ItemsSource="{Binding People}" SelectedItem="{Binding SelectedPerson}" />
+
+        <Label Grid.Row="1" Grid.Column="0" Content="Relative:" />
+        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding People}" SelectedItem="{Binding SelectedRelative}" />
+
+        <Label Grid.Row="2" Grid.Column="0" Content="Relation Type:" />
+        <ComboBox Grid.Row="2" Grid.Column="1" SelectedItem="{Binding RelationType}">
+            <ComboBoxItem Content="Parent" />
+            <ComboBoxItem Content="Child" />
+            <ComboBoxItem Content="Spouse" />
+        </ComboBox>
+
+        <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Set Relationship" Command="{Binding SetRelationshipCommand}" />
+    </Grid>
+</Window>
