@@ -1,20 +1,46 @@
-﻿<Window x:Class="LAB_4.UI.MainWindow"
+﻿<Window x:Class="LAB_4.Presentation.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Genealogy Tree" Height="450" Width="800">
+        Title="Главное окно" Height="600" Width="900">
     <Grid>
         <DockPanel>
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="File">
-                    <MenuItem Header="Save Tree" Command="{Binding SaveCommand}" />
-                </MenuItem>
-            </Menu>
-            <StackPanel DockPanel.Dock="Left" Width="200">
-                <Button Content="Add Person" Command="{Binding AddPersonCommand}" />
-                <Button Content="Show Tree" Command="{Binding ShowTreeCommand}" />
+            <StackPanel DockPanel.Dock="Left" Width="250" Background="#f4f4f4" Margin="5">
+                <TextBlock Text="Фильтры" FontWeight="Bold" Margin="5"/>
+
+                <ComboBox Name="RelationFilter" Margin="5" SelectedIndex="0">
+                    <ComboBoxItem Content="Ближайшие (супруги, дети, родители)"/>
+                    <ComboBoxItem Content="Все связи"/>
+                    <ComboBoxItem Content="Бабушки/Дедушки"/>
+                    <ComboBoxItem Content="Внуки"/>
+                    <ComboBoxItem Content="Братья/Сестры"/>
+                    <ComboBoxItem Content="Дяди/Тети"/>
+                    <ComboBoxItem Content="Племянники"/>
+                    <ComboBoxItem Content="Кузены"/>
+                    <ComboBoxItem Content="Тесть/Теща/Свекр/Свекровь"/>
+                    <ComboBoxItem Content="Пасынок/Падчерица"/>
+                    <ComboBoxItem Content="Золовка/Шурин/Свояк"/>
+                </ComboBox>
+
+
+                <Button Content="Применить фильтр" Margin="5" Click="ApplyFilter"/>
+                <Button Content="Сбросить фильтр" Margin="5" Click="ResetFilters"/>
+
+                <Separator Margin="5"/>
+
+                <Button Content="Создать новое дерево" Margin="5" Click="ResetTree"/>
+                <Button Content="Добавить человека в дерево" Margin="5" Click="AddPersonToTree"/>
+                <Button Content="Удалить человека" Margin="5" Click="RemovePersonFromTree" />
+
+
+                <Separator Margin="5"/>
+
+                <Button Content="Управление людьми" Margin="5" Click="OpenPeopleWindow"/>
+                <Button Content="Управление отношениями" Margin="5" Click="OpenRelationsWindow"/>
+                <Button Content="Дополнительные функции" Margin="5" Click="OpenFunctionsWindow"/>
             </StackPanel>
+
             <ScrollViewer>
-                <TextBlock x:Name="TreeView" Text="{Binding TreeText}" />
+                <Canvas Name="TreeCanvas" Background="#eaeaea"/>
             </ScrollViewer>
         </DockPanel>
     </Grid>

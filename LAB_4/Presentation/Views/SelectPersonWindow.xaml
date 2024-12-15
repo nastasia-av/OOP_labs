@@ -1,0 +1,18 @@
+﻿<Window x:Class="LAB_4.Presentation.Views.SelectPersonWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Выбор человека" Height="150" Width="400" WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ComboBox x:Name="PersonComboBox" HorizontalAlignment="Stretch" />
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right" Margin="5">
+            <Button Content="Выбрать" Width="80" Margin="5" Click="OkButton_Click" />
+            <Button Content="Отмена" Width="80" Margin="5" Click="CancelButton_Click" />
+        </StackPanel>
+    </Grid>
+</Window>

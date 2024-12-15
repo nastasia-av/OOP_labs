@@ -1,0 +1,88 @@
+﻿<Window x:Class="LAB_4.Presentation.Views.OperationsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Операции с родственниками" Height="700" Width="1000">
+    <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Человек" Margin="0,0,0,5" />
+                    <ComboBox Width="250" ItemsSource="{Binding People}" 
+                              SelectedItem="{Binding SelectedPerson}" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=., Converter={StaticResource PersonToDisplayConverter}}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <Button Content="Найти родителей и детей" 
+                        Command="{Binding FindCloseRelativesCommand}" Width="250" Margin="10,5,5,5" VerticalAlignment="Bottom" />
+            </StackPanel>
+
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Предок" Margin="0,0,0,5" />
+                    <ComboBox Width="200" ItemsSource="{Binding People}"
+                              SelectedItem="{Binding SelectedAncestor}" >
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=., Converter={StaticResource PersonToDisplayConverter}}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Потомок" Margin="0,0,0,5" />
+                    <ComboBox Width="200" ItemsSource="{Binding People}"
+                              SelectedItem="{Binding SelectedDescendant}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=., Converter={StaticResource PersonToDisplayConverter}}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <Button Content="Вычислить возраст предка" 
+                        Command="{Binding CalculateAncestorAgeCommand}" Width="250" Margin="10,5,5,5" VerticalAlignment="Bottom" />
+            </StackPanel>
+
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Человек 1" Margin="0,0,0,5" />
+                    <ComboBox Width="250" ItemsSource="{Binding People}"
+                              SelectedItem="{Binding SelectedPerson1}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=., Converter={StaticResource PersonToDisplayConverter}}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Человек 2" Margin="0,0,0,5" />
+                    <ComboBox Width="250" ItemsSource="{Binding People}"
+                              SelectedItem="{Binding SelectedPerson2}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=., Converter={StaticResource PersonToDisplayConverter}}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel >
+                <Button Content="Найти общих предков" 
+                        Command="{Binding FindCommonAncestorsCommand}" Width="250" Margin="10,5,5,5" VerticalAlignment="Bottom" />
+                <Button Content="Очистить результаты" 
+                        Command="{Binding ClearResultsCommand}"  Width="150" Margin="10,5,5,5" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+            </StackPanel>
+
+            <ListView ItemsSource="{Binding Results}" Margin="10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Результат" DisplayMemberBinding="{Binding Description}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</Window>

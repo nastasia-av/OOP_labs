@@ -2,54 +2,55 @@
 using Microsoft.EntityFrameworkCore;
 using LAB_4.DAL.Interfaces;
 
-namespace LAB_4.DAL.Repositories;
-
-public class SqlPersonRepository : IPersonRepository
+namespace LAB_4.DAL.Repositories
 {
-    private readonly ApplicationDbContext _context;
-
-    public SqlPersonRepository(ApplicationDbContext context)
+    public class SqlPersonRepository : IPersonRepository
     {
-        _context = context;
-    }
+        private readonly ApplicationDbContext _context;
 
-    public async Task<IEnumerable<Person>> GetAllAsync()
-    {
-        return await _context.People.ToListAsync();
-    }
-
-    public async Task<Person?> GetByIdAsync(int id)
-    {
-        return await _context.People.FindAsync(id);
-    }
-
-    public async Task AddAsync(Person person)
-    {
-        await _context.People.AddAsync(person);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task UpdateAsync(Person person)
-    {
-        _context.People.Update(person);
-        await _context.SaveChangesAsync();
-    }
-
-    public async Task DeleteAsync(int id)
-    {
-        var person = await GetByIdAsync(id);
-        if (person != null)
+        public SqlPersonRepository(ApplicationDbContext context)
         {
-            _context.People.Remove(person);
+            _context = context;
+        }
+
+        public async Task AddAsync(Person person)
+        {
+            await _context.People.AddAsync(person);
             await _context.SaveChangesAsync();
         }
-    }
 
-    public async Task<IEnumerable<Person>> GetByFullNameAsync(string firstName, string lastName, string middleName)
-    {
-        return await _context.People
-            .Where(p => p.FirstName == firstName && p.LastName == lastName && p.MiddleName == middleName)
-            .ToListAsync();
-    }
+        public async Task UpdateAsync(Person person)
+        {
+            _context.People.Update(person);
+            await _context.SaveChangesAsync();
+        }
 
+        public async Task DeleteAsync(int personId)
+        {
+            var person = await _context.People.FindAsync(personId);
+            if (person != null)
+            {
+                _context.People.Remove(person);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<Person?> GetByIdAsync(int personId)
+        {
+            return await _context.People.FindAsync(personId);
+        }
+
+        public async Task<IEnumerable<Person>> GetAllAsync()
+        {
+            return await _context.People.ToListAsync();
+        }
+
+        public async Task<List<Person>> GetMainTreePeopleAsync()
+        {
+            return await _context.People
+                .Where(p => p.IsInMainTree)
+                .ToListAsync();
+        }
+
+    }
 }

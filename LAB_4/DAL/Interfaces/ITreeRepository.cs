@@ -5,8 +5,11 @@ namespace LAB_4.DAL.Interfaces
 {
     public interface ITreeRepository
     {
-        Task<Tree?> GetCurrentTreeAsync();
-        Task ResetTreeAsync();
-
+        Task<Tree?> GetActiveTreeAsync();
+        Task CreateNewTreeAsync();
+        Task DeleteTreeAsync();
+        Task AddPersonToTreeAsync(int personId);
+        Task RemovePersonFromTreeAsync(int personId);
+        Task<IEnumerable<Person>> GetAllPeopleInTreeAsync();
     }
 }

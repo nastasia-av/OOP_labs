@@ -1,0 +1,70 @@
+﻿<Window x:Class="LAB_4.Presentation.Views.PersonManagementView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Управление людьми" Height="500" Width="1000">
+    <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Имя" Margin="0,0,0,5" />
+                    <TextBox Width="150" Text="{Binding NewPersonFirstName}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Фамилия" Margin="0,0,0,5" />
+                    <TextBox Width="150" Text="{Binding NewPersonLastName}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Отчество" Margin="0,0,0,5" />
+                    <TextBox Width="150" Text="{Binding NewPersonMiddleName}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Дата рождения" Margin="0,0,0,5" />
+                    <DatePicker Width="150" SelectedDate="{Binding NewPersonDateOfBirth}" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Пол" Margin="0,0,0,5" />
+                    <ComboBox Width="150" ItemsSource="{Binding Genders}" 
+                              SelectedItem="{Binding NewPersonGender}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Converter={StaticResource GenderToStringConverter}}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+                <Button Content="Добавить человека" 
+                        Command="{Binding AddPersonCommand}" Width="150" Margin="5" VerticalAlignment="Bottom"/>
+            </StackPanel>
+
+            <ListView ItemsSource="{Binding Persons}" DockPanel.Dock="Bottom" Margin="10">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="50"/>
+                        <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding FirstName}" Width="150"/>
+                        <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding LastName}" Width="150"/>
+                        <GridViewColumn Header="Отчество" DisplayMemberBinding="{Binding MiddleName}" Width="150"/>
+                        <GridViewColumn Header="Дата рождения" DisplayMemberBinding="{Binding DateOfBirth, StringFormat='dd.MM.yyyy'}" Width="120"/>
+                        <GridViewColumn Header="Пол" DisplayMemberBinding="{Binding Gender}" Width="100"/>
+                        <GridViewColumn>
+                            <GridViewColumn.Header>
+                                <TextBlock Text="Действия" />
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Изменить" 
+                                                Command="{Binding DataContext.EditPersonCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                CommandParameter="{Binding}" Margin="5,0"/>
+                                        <Button Content="Удалить" 
+                                                Command="{Binding DataContext.DeletePersonCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                CommandParameter="{Binding}" Margin="5,0"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</Window>

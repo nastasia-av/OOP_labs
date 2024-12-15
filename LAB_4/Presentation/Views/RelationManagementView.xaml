@@ -1,0 +1,91 @@
+﻿<Window x:Class="LAB_4.Presentation.Views.RelationManagementView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Управление отношениями" Height="600" Width="900">
+    <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Человек" Margin="0,0,0,5" />
+                    <ComboBox Width="200" ItemsSource="{Binding People}" 
+                              SelectedItem="{Binding SelectedPerson}" VerticalAlignment="Center">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=., Converter={StaticResource PersonToDisplayConverter}}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Связанный человек" Margin="0,0,0,5" />
+                    <ComboBox Width="200" ItemsSource="{Binding People}"
+                              SelectedItem="{Binding RelatedPerson}" VerticalAlignment="Center">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=., Converter={StaticResource PersonToDisplayConverter}}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Тип связи" Margin="0,0,0,5" />
+                    <ComboBox Width="200" ItemsSource="{Binding RelationTypes}"
+                              SelectedItem="{Binding SelectedRelationType}" VerticalAlignment="Center">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Converter={StaticResource RelationTypeToStringConverter}}" />
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+
+                <Button Content="Добавить связь" 
+                        Command="{Binding AddRelationCommand}" Width="200" Margin="5" VerticalAlignment="Bottom"/>
+            </StackPanel>
+
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="10">
+                <StackPanel Orientation="Vertical" Margin="5">
+                    <TextBlock Text="Человек" Margin="0,0,0,5"/>
+                    <ComboBox Width="200" ItemsSource="{Binding People}"
+                              SelectedItem="{Binding PersonForSearch}" VerticalAlignment="Center">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=., Converter={StaticResource PersonToDisplayConverter}}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+
+                <Button Content="Найти связи" 
+                        Command="{Binding FindRelationsCommand}" Width="200" Margin="5" VerticalAlignment="Bottom"/>
+
+                <Button Content="Показать все" 
+                        Command="{Binding ShowAllRelationsCommand}" Width="100" Margin="5" VerticalAlignment="Bottom"/>
+            </StackPanel>
+
+            <ListView ItemsSource="{Binding Relations}" Margin="10" DockPanel.Dock="Bottom">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" />
+                        <GridViewColumn Header="Человек" DisplayMemberBinding="{Binding PersonId}" />
+                        <GridViewColumn Header="Связанный человек" DisplayMemberBinding="{Binding RelatedPersonId}" />
+                        <GridViewColumn Header="Тип связи" DisplayMemberBinding="{Binding RelationType}" />
+                        <GridViewColumn Header="Действия">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Content="Удалить" 
+                                                Command="{Binding DataContext.DeleteRelationCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                                CommandParameter="{Binding}" Margin="5,0" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</Window>
