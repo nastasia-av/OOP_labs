@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
-using GenealogyTree.UI.Utils;
+using LAB_4.Presentation.Utils;
 using LAB_4.BLL.Services;
 
 namespace GenealogyTree.UI.ViewModels

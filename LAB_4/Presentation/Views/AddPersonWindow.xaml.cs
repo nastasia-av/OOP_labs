@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Input;
-using GenealogyTree.UI.Utils;
+using LAB_4.Presentation.Utils;
 using LAB_4.BLL.Services;
 
-namespace LAB_4.UI.ViewModels
+namespace LAB_4.Presentation.ViewModels
 {
     public class AddPersonViewModel
     {

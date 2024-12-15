@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Windows.Input;
 using LAB_4.BLL.Services;
+using LAB_4.Presentation.Utils;
 
-namespace LAB_4.UI.ViewModels
+namespace LAB_4.Presentation.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {

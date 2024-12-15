@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace GenealogyTree.UI.Utils
+namespace LAB_4.Presentation.Utils
 {
     public class RelayCommand : ICommand
     {

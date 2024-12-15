@@ -1,4 +1,4 @@
-﻿<Window x:Class="LAB_4.UI.Views.AddPersonWindow"
+﻿<Window x:Class="LAB_4.Presentstion.Views.AddPersonWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Add Person" Height="300" Width="400">
